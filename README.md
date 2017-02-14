@@ -55,8 +55,8 @@ footer {
 <!DOCTYPE html>
 <html>
 	<head>
-		<script>...link.js...</script>
-		<style>...critical css...</style>
+		<script>(link.js)</script>
+		<style>(critical css)</style>
 	</head>
 	<body>
 		<header>
@@ -79,8 +79,8 @@ footer {
 <!DOCTYPE html>
 <html>
 	<head>
-		<script>...xhr.js...</script>
-		<style>...critical css...</style>
+		<script>(xhr.js)</script>
+		<style>(critical css)</style>
 		<script>importCSS('section.css')</script>
 		<script>importCSS('footer.css')</script>
 	</head>
