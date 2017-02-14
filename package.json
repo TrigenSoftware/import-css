@@ -1,6 +1,6 @@
 {
   "name": "import-css",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Load CSS asynchronously without render blocking.",
   "main": "lib/link.js",
   "scripts": {
