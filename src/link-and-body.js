@@ -33,9 +33,9 @@ function onLoadLinkDefined(resolvedHref, cb) {
 		}
 	}
 
-	setTimeout(() =>
-		onLoadLinkDefined(resolvedHref, cb)
-	);
+	setTimeout(() => {
+		onLoadLinkDefined(resolvedHref, cb);
+	});
 }
 
 export default function importCSS(href, media) {

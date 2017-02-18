@@ -25,9 +25,9 @@ function ready(cb) {
 		return;
 	}
 
-	setTimeout(() =>
-		ready(cb)
-	);
+	setTimeout(() => {
+		ready(cb);
+	});
 }
 
 export default function importCSS(href) {
@@ -41,9 +41,9 @@ export default function importCSS(href) {
 		if (loaded) {
 			// `insertBefore` is used instead of `appendChild`,
 			// for safety re: http://www.paulirish.com/2011/surefire-dom-element-insertion/
-			ready(() =>
-				root.insertBefore(style, null)
-			);
+			ready(() => {
+				root.insertBefore(style, null);
+			});
 		}
 
 		return loaded;

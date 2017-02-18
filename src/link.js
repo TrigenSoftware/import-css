@@ -26,9 +26,9 @@ function ready(cb) {
 		return;
 	}
 
-	setTimeout(() =>
-		ready(cb)
-	);
+	setTimeout(() => {
+		ready(cb);
+	});
 }
 
 // A method (exposed on return object for external use) that mimics onload
@@ -44,9 +44,9 @@ function onLoadLinkDefined(resolvedHref, cb) {
 		}
 	}
 
-	setTimeout(() =>
-		onLoadLinkDefined(resolvedHref, cb)
-	);
+	setTimeout(() => {
+		onLoadLinkDefined(resolvedHref, cb);
+	});
 }
 
 export default function importCSS(href, media) {
@@ -70,9 +70,9 @@ export default function importCSS(href, media) {
 
 	// `insertBefore` is used instead of `appendChild`,
 	// for safety re: http://www.paulirish.com/2011/surefire-dom-element-insertion/
-	ready(() =>
-		root.insertBefore(link, null)
-	);
+	ready(() => {
+		root.insertBefore(link, null);
+	});
 
 	function onLoad() {
 
