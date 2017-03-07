@@ -23,7 +23,7 @@ yarn add import-css
 
 2. `link-and-body.js` also uses`<link>` tag, but this variant a little lighter than `link.js` because of restricted to use only in `<body>`.
 
-3. `xhr.js` obviously uses XMLHttpRequest to load styles. For earlier loading start recommended to call this function only in `<head>`. `xhr.js` variant loads styles fully async and more faster (if started at `<head>`). But with `<link>` variant you have possibilities to include styles from other hosts without CORS. In IE and Edge `xhr.js` loads styles in parallel unlike `<link>` variants. 
+3. `xhr.js` obviously uses XMLHttpRequest to load styles. For earlier loading start recommended to call this function only in `<head>`. `xhr.js` variant loads styles fully async and more faster (if started at `<head>`). But with `<link>` variant you have possibilities to include styles from other hosts without CORS. 
 
 # Examples
 
