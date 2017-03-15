@@ -29,11 +29,11 @@ Also exist `*-async.js` variants of both files, where you can import CSS outside
 
 ### importCSS(String url, String media)
 
-Files: link.js, link-in-body.js
+Files: `link.js`, `link-in-body.js`
 
 ### importCSS(String url, String media, Boolean async)
 
-Files: link-async.js, link-in-body-async.js
+Files: `link-async.js`, `link-in-body-async.js`
 
 # Examples
 
