@@ -2,7 +2,7 @@
 
 # import-css
 
-Load CSS asynchronously without render blocking.
+Load CSS asynchronously without render blocking in the given order.
 
 # Getting Started
 
@@ -17,13 +17,23 @@ yarn add import-css
 
 # About
 
-`import-css` contains 3 variants of `importCSS` function
+`import-css` contains 2 variants of `importCSS` function
 
 1. `link.js` variant uses `<link>` tag. If you want to import multiple styles for "progressive loading" recommended move all function calls before `</body>`.
 
-2. `link-and-body.js` also uses`<link>` tag, but this variant a little lighter than `link.js` because of restricted to use only in `<body>`.
+2. `link-in-body.js` also uses`<link>` tag, but this variant a little lighter than `link.js` because of restricted to use only in `<body>`.
 
-3. `xhr.js` obviously uses XMLHttpRequest to load styles. For earlier loading start recommended to call this function only in `<head>`. `xhr.js` variant loads styles fully async and more faster (if started at `<head>`). But with `<link>` variant you have possibilities to include styles from other hosts without CORS. 
+Also exist `*-async.js` variants of both files, where you can import CSS outside of queue.
+
+# API
+
+### importCSS(String url, String media)
+
+Files: link.js, link-in-body.js
+
+### importCSS(String url, String media, Boolean async)
+
+Files: link-async.js, link-in-body-async.js
 
 # Examples
 
@@ -70,30 +80,6 @@ footer {
 		</footer>
 		<script>importCSS('section.css')</script>
 		<script>importCSS('footer.css')</script>
-	</body>
-</html>
-```
-
-`index.html` with `xhr.js`
-```html
-<!DOCTYPE html>
-<html>
-	<head>
-		<script>(xhr.js)</script>
-		<style>(critical css)</style>
-		<script>importCSS('section.css')</script>
-		<script>importCSS('footer.css')</script>
-	</head>
-	<body>
-		<header>
-			<h1>Header</h1>
-		</header>
-		<section>
-			<h1>Section</h1>
-		</section>
-		<footer>
-			<h1>Footer</h1>
-		</footer>
 	</body>
 </html>
 ```
