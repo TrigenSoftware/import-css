@@ -11,7 +11,7 @@ Load CSS asynchronously without render blocking in the given order.
 
 ```bash
 npm i -S import-css
-#or
+# or
 yarn add import-css
 ```
 
