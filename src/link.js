@@ -4,54 +4,17 @@
  *
  * If you want to import multiple styles for "progressive loading"
  * recommended to move all function calls before </body>.
- *
- * XHR variant loads styles fully async and more faster,
- * becouse loading starts at <head>. But with <link> variant
- * you have possibilities to include styles from other hosts
- * without CORS.
  */
 
-const $    = document,
-	root   = $.body || $.getElementsByTagName('head')[0],
-	sheets = $.styleSheets;
+import { document, root } from './lib/globals';
+import onBodyReady from './lib/on-body-ready';
+import onStyleLoad from './lib/on-style-load';
 
 let queue = [];
 
-// wait until body is defined before injecting link.
-// This ensures a non-blocking load in IE11.
-function ready(cb) {
+window.importCSS = (href, media) => {
 
-	if ($.body) {
-		cb();
-		return;
-	}
-
-	setTimeout(() => {
-		ready(cb);
-	});
-}
-
-// A method (exposed on return object for external use) that mimics onload
-// by polling $ument.styleSheets until it includes the new sheet.
-function onLoadLinkDefined(resolvedHref, cb) {
-
-	let i = sheets.length;
-
-	while (i--) {
-		if (sheets[i].href === resolvedHref) {
-			cb();
-			return;
-		}
-	}
-
-	setTimeout(() => {
-		onLoadLinkDefined(resolvedHref, cb);
-	});
-}
-
-export default function importCSS(href, media) {
-
-	const link = $.createElement('link');
+	const link = document.createElement('link');
 
 	let loaded = false;
 
@@ -70,7 +33,7 @@ export default function importCSS(href, media) {
 
 	// `insertBefore` is used instead of `appendChild`,
 	// for safety re: http://www.paulirish.com/2011/surefire-dom-element-insertion/
-	ready(() => {
+	onBodyReady(() => {
 		root.insertBefore(link, null);
 	});
 
@@ -95,5 +58,5 @@ export default function importCSS(href, media) {
 		link.addEventListener('load', onLoad);
 	}
 
-	onLoadLinkDefined(link.href, onLoad);
-}
+	onStyleLoad(link.href, onLoad);
+};

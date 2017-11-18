@@ -1,17 +1,17 @@
-[![NPM](https://nodei.co/npm/import-css.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/import-css/)
-
 # import-css
+
+[![NPM version][npm]][npm-url]
+
+[npm]: https://img.shields.io/npm/v/import-css.svg
+[npm-url]: https://npmjs.com/package/import-css
 
 Load CSS asynchronously without render blocking in the given order.
 
-# Getting Started
+# Install
 
-Install with npm
 ```bash
-npm i import-css
-```
-or
-```bash
+npm i -S import-css
+#or
 yarn add import-css
 ```
 
@@ -83,3 +83,6 @@ footer {
 	</body>
 </html>
 ```
+
+---
+[![NPM](https://nodei.co/npm/import-css.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/import-css/)

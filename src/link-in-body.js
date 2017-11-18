@@ -5,42 +5,18 @@
  * If you want to import multiple styles for "progressive loading"
  * recommended to move all function calls before </body>.
  *
- * XHR variant loads styles fully async and more faster,
- * becouse loading starts at <head>. But with <link> variant
- * you have possibilities to include styles from other hosts
- * without CORS.
- *
  * This variant a little lighter than `link.js`.
  * FOR USAGE IN <body> ONLY!
  */
 
-const $    = document,
-	root   = $.body || $.getElementsByTagName('head')[0],
-	sheets = $.styleSheets;
+import { document, root } from './lib/globals';
+import onStyleLoad from './lib/on-style-load';
 
 let queue = [];
 
-// A method (exposed on return object for external use) that mimics onload
-// by polling $ument.styleSheets until it includes the new sheet.
-function onLoadLinkDefined(resolvedHref, cb) {
+window.importCSS = (href, media) => {
 
-	let i = sheets.length;
-
-	while (i--) {
-		if (sheets[i].href === resolvedHref) {
-			cb();
-			return;
-		}
-	}
-
-	setTimeout(() => {
-		onLoadLinkDefined(resolvedHref, cb);
-	});
-}
-
-export default function importCSS(href, media) {
-
-	const link = $.createElement('link');
+	const link = document.createElement('link');
 
 	let loaded = false;
 
@@ -82,5 +58,5 @@ export default function importCSS(href, media) {
 		link.addEventListener('load', onLoad);
 	}
 
-	onLoadLinkDefined(link.href, onLoad);
-}
+	onStyleLoad(link.href, onLoad);
+};
